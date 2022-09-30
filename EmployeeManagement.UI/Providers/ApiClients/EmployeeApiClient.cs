@@ -26,10 +26,10 @@ namespace EmployeeManagement.UI.Providers.ApiClients
             }
         }
 
-        public EmployeeData GetEmployeeById(int id)
+        public EmployeeData GetEmployeeById(int employeeId)
         {
             //Consume /{employeeId} endpoint in the EmployeeManagementApi using _httpClient
-            using (var response = _httpClient.GetAsync("https://localhost:5001/api/employee/{id}").Result)
+            using (var response = _httpClient.GetAsync("https://localhost:5001/api/employee/" + employeeId).Result)
             {
                 var employeeById = JsonConvert.DeserializeObject<EmployeeData>(response.Content.ReadAsStringAsync().Result);
                 return employeeById;
